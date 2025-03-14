@@ -31,7 +31,6 @@ I am not responsible in any way for the inappropriate use of data extracted thro
 * [Filters](#filters)
 * [Company filter](#company-filter)
 * [Logger](#logger)
-* [Sponsors](#sponsors)
 * [License](#license)
 
 <!-- toc stop -->
@@ -353,22 +352,6 @@ Example:
 ```sh
 DEBUG=scraper:info node app.js
 ```
-
-## Sponsors
-
-### [Proxycurl APIs](https://nubela.co/proxycurl?utm_campaign=influencer_marketing&utm_source=github&utm_medium=social&utm_content=spinlud_linkedin_jobs_scraper)
-<a href="https://nubela.co/proxycurl?utm_campaign=influencer_marketing&utm_source=github&utm_medium=social&utm_content=spinlud_linkedin_jobs_scraper" target="_blank"><img src="media/Proxycurl_logo_2.png" width="300px"/></a>
-
-Scrape public LinkedIn profile data at scale with Proxycurl APIs.
-
-* Scraping Public profiles are battle tested in court in HiQ VS LinkedIn case.
-* GDPR, CCPA, SOC2 compliant.
-* High rate Limit - 300 requests/minute Fast APIs respond in ~2s.
-* Fresh data - 88% of data is scraped real-time, other 12% are not older than 29 days.
-* High accuracy.
-* Tons of data points returned per profile.
-
-Built for developers, by developers.
 
 ## License
 [MIT License](http://en.wikipedia.org/wiki/MIT_License)
