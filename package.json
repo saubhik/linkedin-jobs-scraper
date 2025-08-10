@@ -25,6 +25,7 @@
   "dependencies": {
     "debug": "^4.4.0",
     "deepmerge": "^4.3.1",
+    "linkedin-jobs-scraper": "^18.0.1",
     "puppeteer": "^24.4.0",
     "random-useragent": "^0.5.0",
     "typed-emitter": "^2.1.0"
