@@ -26,6 +26,7 @@ export interface IQueryOptions {
         type?: string | string[];
         experience?: string | string[];
         onSiteOrRemote?: string | string[];
+        under10Applicants?: boolean;
         industry?: string | string[];
     },
     descriptionFn?: () => string;
@@ -48,7 +49,7 @@ export interface IQueryValidationError {
 export const validateQuery = (query: IQuery): IQueryValidationError[] => {
     const errors: IQueryValidationError[] = [];
 
-    if (query.query && typeof(query.query) !== "string") {
+    if (query.query && typeof (query.query) !== "string") {
         errors.push({
             param: "query",
             reason: `Must be a string`
@@ -64,42 +65,42 @@ export const validateQuery = (query: IQuery): IQueryValidationError[] => {
             limit,
         } = query.options;
 
-        if (locations && (!Array.isArray(locations) || !locations.every(e => typeof(e) === "string"))) {
+        if (locations && (!Array.isArray(locations) || !locations.every(e => typeof (e) === "string"))) {
             errors.push({
                 param: "options.locations",
                 reason: `Must be an array of strings`
             });
         }
 
-        if (descriptionFn && typeof(descriptionFn) !== "function") {
+        if (descriptionFn && typeof (descriptionFn) !== "function") {
             errors.push({
                 param: "options.descriptionFn",
                 reason: `Must be a function`
             });
         }
 
-        if (query.options.hasOwnProperty("optimize") && typeof(query.options.optimize) !== "boolean") {
+        if (query.options.hasOwnProperty("optimize") && typeof (query.options.optimize) !== "boolean") {
             errors.push({
                 param: "options.optimize",
                 reason: `Must be a boolean`
             });
         }
 
-        if (query.options.hasOwnProperty("applyLink") && typeof(query.options.applyLink) !== "boolean") {
+        if (query.options.hasOwnProperty("applyLink") && typeof (query.options.applyLink) !== "boolean") {
             errors.push({
                 param: "options.applyLink",
                 reason: `Must be a boolean`
             });
         }
 
-        if (query.options.hasOwnProperty("skipPromotedJobs") && typeof(query.options.skipPromotedJobs) !== "boolean") {
+        if (query.options.hasOwnProperty("skipPromotedJobs") && typeof (query.options.skipPromotedJobs) !== "boolean") {
             errors.push({
                 param: "options.skipPromotedJobs",
                 reason: `Must be a boolean`
             });
         }
 
-        if (query.options.hasOwnProperty("skills") && typeof(query.options.skills) !== "boolean") {
+        if (query.options.hasOwnProperty("skills") && typeof (query.options.skills) !== "boolean") {
             errors.push({
                 param: "options.skills",
                 reason: `Must be a boolean`
@@ -122,7 +123,7 @@ export const validateQuery = (query: IQuery): IQueryValidationError[] => {
 
         if (filters) {
             if (filters.companyJobsUrl) {
-                if (typeof(filters.companyJobsUrl) !== "string") {
+                if (typeof (filters.companyJobsUrl) !== "string") {
                     errors.push({
                         param: "options.filters.companyUrl",
                         reason: `Must be a string`
@@ -142,7 +143,7 @@ export const validateQuery = (query: IQuery): IQueryValidationError[] => {
                         });
                     }
                 }
-                catch(err: any) {
+                catch (err: any) {
                     errors.push({
                         param: "options.filters.companyJobsUrl",
                         reason: `Must be a valid url`

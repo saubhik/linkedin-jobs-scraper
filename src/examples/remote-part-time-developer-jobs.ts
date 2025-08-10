@@ -7,14 +7,14 @@ import {
     onSiteOrRemoteFilter,
     baseSalaryFilter,
     events,
-} from "linkedin-jobs-scraper";
+} from "..";
 
 (async () => {
     // Each scraper instance is associated with one browser.
     // Concurrent queries will run on different pages within the same browser instance.
     const scraper = new LinkedinScraper({
         headless: true,
-        slowMo: 200, // 100ms for each concurrent query for rate limiting.
+        slowMo: 100, // 100ms for each concurrent query for rate limiting.
         args: [
             "--lang=en-US",
         ],
@@ -76,6 +76,7 @@ import {
                         type: [typeFilter.PART_TIME, typeFilter.CONTRACT, typeFilter.TEMPORARY],
                         experience: [experienceLevelFilter.ENTRY_LEVEL, experienceLevelFilter.MID_SENIOR],
                         onSiteOrRemote: [onSiteOrRemoteFilter.REMOTE],
+                        under10Applicants: true,
                     },
                     skills: true,
                     descriptionFn: descriptionFn,
@@ -83,12 +84,11 @@ import {
             },
         ], { // Global options, will be merged individually with each query options
             // locations: ["Europe"],
-            optimize: true,
-            limit: 33,
+            // optimize: true,
+            // limit: 33,
         }),
     ]);
 
     // Close browser
     await scraper.close();
 })();
-

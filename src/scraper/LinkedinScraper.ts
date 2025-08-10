@@ -141,6 +141,10 @@ class LinkedinScraper extends Scraper {
                 url.searchParams.append("f_WT", options.filters.onSiteOrRemote.join(","));
             }
 
+            if (options.filters.under10Applicants) {
+                url.searchParams.append("f_EA", "true");
+            }
+
             if (options.filters.industry) {
                 if (!Array.isArray(options.filters.industry)) {
                     options.filters.industry = [options.filters.industry]
@@ -289,7 +293,7 @@ class LinkedinScraper extends Scraper {
                 page.on("request", onRequest);
 
                 // Error response and rate limiting check
-                page.on("response",  response => {
+                page.on("response", response => {
                     if (response.status() === 429) {
                         logger.warn(tag, "Error 429 too many requests. You would probably need to use a higher 'slowMo' value and/or reduce the number of concurrent queries.");
                     }
@@ -345,7 +349,7 @@ class LinkedinScraper extends Scraper {
                 const pollingTime = 100;
                 let elapsed = 0;
 
-                while(this._state !== states.initialized) {
+                while (this._state !== states.initialized) {
                     await sleep(pollingTime);
                     elapsed += pollingTime;
 
